@@ -6,12 +6,11 @@ django.setup()
 
 from django.contrib.auth.models import User
 
-username = os.environ.get('DJANGO_SUPERUSER_USERNAME', 'admin')
-password = os.environ.get('DJANGO_SUPERUSER_PASSWORD', 'admin123')
-email = os.environ.get('DJANGO_SUPERUSER_EMAIL', 'admin@example.com')
-
-if not User.objects.filter(username=username).exists():
-    User.objects.create_superuser(username, email, password)
-    print(f"Superuser '{username}' created!")
-else:
-    print(f"Superuser '{username}' already exists!")
+try:
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@example.com', 'admin123')
+        print("SUCCESS: Superuser created!")
+    else:
+        print("INFO: Superuser already exists!")
+except Exception as e:
+    print(f"ERROR: {e}")
