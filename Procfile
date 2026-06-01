@@ -1,1 +1,1 @@
-web: python manage.py migrate && python create_admin.py && gunicorn core.wsgi --bind 0.0.0.0:$PORT
+web: python manage.py migrate && python manage.py createsuperuser --noinput || true && gunicorn core.wsgi --bind 0.0.0.0:$PORT
