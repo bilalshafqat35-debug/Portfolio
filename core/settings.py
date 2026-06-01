@@ -126,3 +126,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-76a76.up.railway.app']
