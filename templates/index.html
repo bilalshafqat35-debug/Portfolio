@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Muhammad Bilal</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="about">
+        <div class="hero-text">
+            <span class="tag">Available for work</span>
+            <h1>Django Developer<br>& <span>Backend Developer</span></h1>
+            <p>Main Python aur Django se robust web applications banata hoon. Clean code aur scalable systems meri specialty hai.</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn-primary">View Projects</a>
+                <a href="#contact" class="btn-outline">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{% static 'images/profile.jpg' %}" alt="Profile Picture">
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills" id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <span>Python</span>
+            <span>Django</span>
+            <span>Django REST</span>
+            <span>PostgreSQL</span>
+            <span>HTML / CSS</span>
+            <span>Git & GitHub</span>
+        </div>
+    </section>
+
+     <!-- Projects -->
+    <section class="projects" id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+        {% for project in projects %}
+        <div class="card">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <div class="tags">
+                {% for tech in project.technologies.split %}
+                <span>{{ tech }}</span>
+                {% endfor %}
+            </div>
+            {% if project.github_link %}
+            <a href="{{ project.github_link }}" target="_blank" class="card-link">View on GitHub →</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+   
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2>Contact</h2>
+        <div class="contact-box">
+            <div>
+                <h3>Open to Work — Let's Connect!</h3>
+                <p>bilalshafqat35@gmail.com . +92 3206895845</p>
+            </div>
+            <div class="contact-links">
+    <a href="https://github.com/bilalshafqat35-debug" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/muhammad-bilal-shafqat-b54992391" target="_blank">LinkedIn</a>
+    <a href="mailto:tumhara@gmail.com">Email</a>
+</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Built with Django · Muhammad Bilal © 2026</p>
+    </footer>
+
+</body>
+</html>
