@@ -332,3 +332,75 @@ footer {
 .card-link:hover {
     text-decoration: underline;
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 14px 20px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .hero-image {
+        order: -1;
+    }
+
+    .hero-image img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .hero-btns {
+        justify-content: center;
+    }
+
+    .skills {
+        padding: 40px 20px;
+    }
+
+    .projects {
+        padding: 40px 20px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact {
+        padding: 40px 20px;
+    }
+
+    .contact-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    footer {
+        padding: 20px;
+    }
+}
