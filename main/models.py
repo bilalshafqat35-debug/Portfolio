@@ -5,6 +5,10 @@ class Project(models.Model):
     description = models.TextField()
     technologies = models.CharField(max_length=300)
     github_link = models.URLField(blank=True)
+
+    # NEW FIELD
+    live_link = models.URLField(blank=True, null=True)
+
     order = models.IntegerField(default=0)
 
     def __str__(self):
