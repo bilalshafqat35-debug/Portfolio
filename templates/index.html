@@ -30,6 +30,7 @@
                 <li><a href="#" class="nav-link" data-section="skills">Skills</a></li>
                 <li><a href="#" class="nav-link" data-section="projects">Projects</a></li>
                 <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+                <li><a href="{% static 'files/Bilal_Resume.pdf' %}" class="nav-link nav-link-cv" download>Download CV</a></li>
             </ul>
         </div>
     </nav>
@@ -107,7 +108,7 @@
             <p class="section-subtitle">Some things I've built</p>
             <div class="projects-grid">
                 {% for project in projects %}
-                <div class="card reveal-card">
+                <div class="card reveal-card{% if forloop.counter|divisibleby:2 %} from-right{% endif %}">
                     <div class="card-header">
                         <div class="card-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -221,12 +222,6 @@
                         target.classList.add('animate-in');
                     });
                 });
-
-                // Animate cards inside the section with stagger
-                const cards = target.querySelectorAll('.reveal-card');
-                cards.forEach((card, i) => {
-                    card.style.transitionDelay = `${0.1 + i * 0.1}s`;
-                });
             }
 
             // Scroll to top
@@ -272,6 +267,27 @@
         // ========== INITIAL STATE ==========
         // About section is active by default (set in HTML class)
         document.getElementById('about').classList.add('animate-in');
+
+        // ========== SCROLL-TRIGGERED CARD ANIMATIONS (left/right) ==========
+        const revealCards = document.querySelectorAll('.reveal-card');
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    // Reset so it animates again next time it scrolls into view
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        revealCards.forEach((card, i) => {
+            card.style.transitionDelay = `${i * 0.08}s`;
+            cardObserver.observe(card);
+        });
     </script>
 
 </body>
